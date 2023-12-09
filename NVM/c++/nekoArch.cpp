@@ -8,8 +8,8 @@ class Machine
     u_int16 mem[0xFF];
     u_int16 ram[0xFF];
     short pc = 0;
-    u_int16 r0;
     u_int16 r1;
+    u_int16 r2;
     u_int16 rx;
 
   public:
@@ -30,15 +30,16 @@ class Machine
     {rx = data;}
 
     void dump()
-    {return mem;}
+    {
+      //very obsecure dump code here
+    }
 
     void lds()
     {
       u_int16 swap;
       swap = r1;
       r1 = r2;
-      r2 = r1;
-      delete swap;
+      r2 = swap;
     }
 
     void lxs()
@@ -47,7 +48,6 @@ class Machine
       swap = r2;
       r2 = rx;
       rx = swap;
-      delete swap;
     }
 
     void sum()

@@ -1,3 +1,5 @@
+#pragma once
+
 typedef unsigned short u_int16;
 
 enum Instructions
