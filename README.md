@@ -27,11 +27,11 @@ NYA : Makes a dump of Ram
 RET : Returns from the program with the value set in register 1  
 SYS : Executes a syscall to the value in the syscall register  
 
-* Syscalls 
+* Syscalls  
 CBUFO : Character Buffer Output (prints a character to the screen from reg 1)  
 CBUFI : Character Buffer Input (gets a character from the user and saves it to reg 2)  
 
-* Char map 
+* Char map  
 ```
 a-z : 1-26   [0x01 - 0x1A]  
 A-Z : 27-51  [0x1B - 0x33]  
@@ -62,4 +62,4 @@ i have an easy way to implement them (crossing my fingers while i pray that poo 
 okay basically i have ram, and i can allocate memory, and i have a varsystem (the sister of a filesystem) so basically ill create NekoFS and nekoArch and NekoLang and while im at it why not a nekoPC then dominate the world with my brands over everything!  
 
 * And so you are creating an assembler then a programming language off your arch using your own assembler by creating your own compiler then compiling the lang using the lang itself making the VM create itself using itself???!!!11!!!!!1!1  
-yes i like esolangs and VM-ceptions
+yes i like esolangs and VM-ceptions  
