@@ -1,1 +1,1 @@
-g++ -o ./build/app ./machine.cpp
+g++ -o ./build/app ./vm.cpp

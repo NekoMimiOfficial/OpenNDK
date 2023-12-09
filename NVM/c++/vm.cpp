@@ -1,5 +1,5 @@
 #include <iostream>
-#include "./nekoArch.cpp"
+#include "./components/NekoArch.cpp"
 
 using std::cout;
 using std::cin;

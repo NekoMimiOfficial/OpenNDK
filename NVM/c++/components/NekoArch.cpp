@@ -1,6 +1,8 @@
-#pragma
+#pragma once
 #include <iostream>
-#include "./types.cpp"
+#include "../libs/fileIO.cpp"
+#include "./NekoArchIO.cpp"
+#include "./NekoFS.cpp"
 
 class Machine
 {
