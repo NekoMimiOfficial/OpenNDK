@@ -1,15 +1,13 @@
 :start
-
-LDA(6)
-LDX(4)
-SYS()
-LDA(5)
-LDX(3)
-SYS()
-LDX(4)
-SYS()
-JMP(end)
+{
+  LDA(1);
+  LDX(1);
+  SYS();
+  JMP(end)
+}
 
 :end
-LDA(0)
-RET()
+{
+  LDA(0);
+  RET();
+}

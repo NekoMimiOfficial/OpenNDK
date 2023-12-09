@@ -2,6 +2,7 @@
 #include <iostream>
 #include "../libs/fileIO.cpp"
 #include "./NekoArchIO.cpp"
+#include "./NekoPico.cpp"
 #include "./NekoFS.cpp"
 
 class Machine
@@ -9,7 +10,6 @@ class Machine
   private:
     u_int16 mem[0xFF];
     u_int16 ram[0xFF];
-    short pc = 0;
     u_int16 r1;
     u_int16 r2;
     u_int16 rx;
