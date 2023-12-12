@@ -51,3 +51,19 @@ yes i like esolangs and VM-ceptions
 
 * So i ended up with a couple of rewrites..  
 yes I'm still learning how a cpu actually functions alongside other components, plus this isnt supposed to be a real PC emulator so im not adding syscalls since i dont have an "OS", i do have a BIOS but thats it, character writing will now be handled by the GFX controller via embedded vram addresses, basically give it a render instruction along the data to render, like a render char inst and itll associate the value with a character on the char list and print it, later on im planning to add a 360x240 display renderer for "complex" GFX,  with a frame buffer that can be directly written to, basicllay it renders a Panel with black pixels that can be manipulated manually, additionally a sprite map can be used that would be stored in a different memory medium (sprite ROM), these are all plans tho, character rendering is what ill support for now, ICTL is gonna handle input from the keyboard  
+
+* wait why is dis redme wrong???  
+you can see a lotz of stuff is wrong since i decided to do some rewrites as i learned more about cpus, i wont remove old stuff as the real docs are in the Docs folder and since this kinda works as a reminder to what my old versions used to work like, its fun and its similar to a diary/blog(eww), also i like the old jokes so they gunna stay  
+yes there is no such thing as syscalls anymore, RET is now HLT, and everything i said i was gonna do made a 180 and is now a thing of the past in favour of a more correct vision and hopefully "PROduct"  
+
+* dont you go insane dealing with all the complexities and errors?  
+CUZ MOOZIK IZ MA BEST FREND!  
+
+* Why choose/sponsor OpenNDK  
+okay imagine this scenario:  
+your boss comes up to your desk but you are playing an addictive game and you wanna close it asap but you'll lose your save, EZ! we got ram dumps on exit(when implemented in an app)... okay okay i should stop milking the cow dry I've already talked about this a LOTZ!  
+KK! picture this:  
+you wanna build an application that you just want it to work on any platform, with NVM you can run Nyani bytecode without recompiling (so.. its like java?) Nuuuu! java bad!, Nyani is fast! (which actually is somewhat true, its faster than java at least "if i can write an efficient NekoLang compiler")  
+so you tell me its a fast VM with savestates?  
+yes pretty much  
+also the theme of NVM and OpenJDK is retro, the system itself is fast, but i want to encorage people to look at old software and learn how devs used to keep everything optimized unlike nowadays where you got crappy OS APIs that do the work for you and you end up writing a buggy codebase let alone a laggy crappy code like most companies unfortunatley do today (yes discord im looking at you!), so lets write clean code that works fast and wont crash (like my hopes) also ! savestates ! rember them !  
