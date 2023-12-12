@@ -6,30 +6,15 @@ just another Virtual Machine project that runs an architecture called nekoArch, 
 * why?  
 I wanted to learn how i can create a new compiled language so i needed an architecture first and i quite hate the current architectures so i decided to build my own cuz why not kekw.  
 
+* Boi dis is too much for a projekt  
+yesh it iz, but its a good way of learning how computers actually work, unlike uncle joe who thinks there is a monkeh inside yer compooter that does all the werk  
+However thine shalt warn thou whom plan to use thy magic machine, OpenJDK hast a workflow not so standard per peasently machines as thy hast assended to higher levels of engineering...  
+alright let's cut this crap talk, it works, it resembles a real system, thats all, its not a 1 to 1 replica but its close enough, it works really well tho (foreshadowing the opposite)  
 
 
 # k'ay more teknikal D-tails nyaou!
 
 The bytecode is really simple its just 16 different instructions and for now 2 syscalls for input and output  
-
-* Instructions  
-LDA : Loads an unsigned short to register 1  
-LDB : Loads an unsigned short to register 2  
-LDX : Loads an unsigned short to the syscall register  
-JMP : Jumps to a certain label if values in registers 1 and 2 are the same  
-JNQ : Jumps to a certain label if values in registers 1 and 2 are not the same 
-SUM : Sums the unsigned shorts in registers 1 and 2 to register 2  
-LDS : Switches the values of registers 1 and 2  
-LXS : Switches the values of registers 2 and syscall reg  
-RAM : Reads memory from Ram to register 1  
-WAM : Writes data from register 1 to Ram  
-NYA : Makes a dump of Ram  
-RET : Returns from the program with the value set in register 1  
-SYS : Executes a syscall to the value in the syscall register  
-
-* Syscalls  
-CBUFO : Character Buffer Output (prints a character to the screen from reg 1)  
-CBUFI : Character Buffer Input (gets a character from the user and saves it to reg 2)  
 
 * Char map  
 ```
@@ -62,4 +47,7 @@ i have an easy way to implement them (crossing my fingers while i pray that poo 
 okay basically i have ram, and i can allocate memory, and i have a varsystem (the sister of a filesystem) so basically ill create NekoFS and nekoArch and NekoLang and while im at it why not a nekoPC then dominate the world with my brands over everything!  
 
 * And so you are creating an assembler then a programming language off your arch using your own assembler by creating your own compiler then compiling the lang using the lang itself making the VM create itself using itself???!!!11!!!!!1!1  
-yes i like esolangs and VM-ceptions  
+yes i like esolangs and VM-ceptions
+
+* So i ended up with a couple of rewrites..  
+yes I'm still learning how a cpu actually functions alongside other components, plus this isnt supposed to be a real PC emulator so im not adding syscalls since i dont have an "OS", i do have a BIOS but thats it, character writing will now be handled by the GFX controller via embedded vram addresses, basically give it a render instruction along the data to render, like a render char inst and itll associate the value with a character on the char list and print it, later on im planning to add a 360x240 display renderer for "complex" GFX,  with a frame buffer that can be directly written to, basicllay it renders a Panel with black pixels that can be manipulated manually, additionally a sprite map can be used that would be stored in a different memory medium (sprite ROM), these are all plans tho, character rendering is what ill support for now, ICTL is gonna handle input from the keyboard  

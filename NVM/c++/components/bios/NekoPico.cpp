@@ -1,1 +1,1 @@
-//this is a file to handle syscalls and other high level functions
+//this is the bios file, bootup is handled by the bios

@@ -10,5 +10,4 @@ enum Instructions
 class GFX
 {
   private:
-    ui16 vram[360][240]
 };
