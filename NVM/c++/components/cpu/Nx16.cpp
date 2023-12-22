@@ -1,69 +1,76 @@
 #pragma once
 #include <iostream>
 #include "../../libs/types.cpp"
-#include "./NekoArchIO.cpp"
 
 enum Instructions
 {
-  LDA = 0x01,
-  LDB = 0x02,
-  LDC = 0x03,
-  LDX = 0x04,
-  TXA = 0x05,
-  TXB = 0x06,
-  TXC = 0x07,
-  ADD = 0x08,
-  INT = 0x09,
-  JMP = 0x0A,
-  JEQ = 0x0B,
-  JNQ = 0x0C,
-  HLT = 0x0D
+  I16 = 0xF0, //Positive 16 bit integer
+  N16 = 0xF1, //Negative 16 bit integer
+
+  LDA = 0x01, //Load to A
+  LDB = 0x02, //Load to B
+  LDC = 0x03, //Load to C
+  LDX = 0x04, //Load to X
+  TXA = 0x05, //Transfer from A
+  TXB = 0x06, //Transfer from B
+  TXC = 0x07, //Transfer from C
+  ADD = 0x08, //Addition arthimetic OP (A + B)
+  INT = 0x09, //NekoPico interrupt
+  JMP = 0x0A, //Jump to address
+  JEQ = 0x0B, //Jump if (A == B)
+  JNQ = 0x0C, //Jump if (A != B)
+  NYA = 0x0D, //Machine save state
+  XYZ = 0x0E, //Open domain
+  HLT = 0x0F  //Halt system
 };
 
 class CPU
 {
   private:
-    u16 ra = 0x0;
-    u16 rb = 0x0;
-    u16 rc = 0x0;
-    u16 rx = 0x0;
-    u16 sp = 0xFFFF;
-    u16 xi = 0;
+    i16 ra = 0x0;
+    i16 rb = 0x0;
+    i16 rc = 0x0;
+    i16 rx = 0x0;
+    i16 sp = 0xFFFF;
+    i16 xi = 0;
 
     bool state = 0;
-    u16 opcode;
-    u16 data;
+    i16 opcode;
+    i16 data;
+
+    Ram& mem;
 
   public:
     //changes the stack pointer (bios sp init)
-    void point(u16 p)
+    void point(i16 p)
     {sp = p;}
 
     //initialize cpu and connect with ram
-    void CPU(u16 mem){u16 mem = mem;}
+    void CPU(Ram& mem) : mem(mem){}
 
     //Load2Reg
-    void lda(u16 addr){ra = mem[addr];}
-    void ldb(u16 addr){rb = mem[addr];}
-    void ldc(u16 addr){rc = mem[addr];}
-    void ldx(u16 addr){rx = mem[addr];}
+    void lda(i16 addr){ra = mem.ram[addr];}
+    void ldb(i16 addr){rb = mem.ram[addr];}
+    void ldc(i16 addr){rc = mem.ram[addr];}
+    void ldx(i16 addr){rx = mem.ram[addr];}
 
     //Transfer from Reg
-    void txa(u16 addr){mem[addr] = ra;}
-    void txb(u16 addr){mem[addr] = rb;}
-    void txc(u16 addr){mem[addr] = rc;}
+    void txa(i16 addr){mem.ram[addr] = ra;}
+    void txb(i16 addr){mem.ram[addr] = rb;}
+    void txc(i16 addr){mem.ram[addr] = rc;}
 
     //basic ALU logic
-    void add(u16 addr){mem[addr] = (ra + rb);}
+    void add(i16 addr){mem.ram[addr] = (ra + rb);}
 
     //interupts and halts
     void sys(){}
-    void hlt(u16 addr){return mem[addr];}
+    void nya(){}
+    void hlt(i16 addr){return mem.ram[addr];}
 
     //jump and conditional jump
-    void jmp(u16 addr){sp = addr;}
-    void jeq(u16 addr){sp = (ra == rb)? addr : sp;}
-    void jnq(u16 addr){sp = (ra == rb)? sp : addr;}
+    void jmp(i16 addr){sp = addr;}
+    void jeq(i16 addr){sp = (ra == rb)? addr : sp;}
+    void jnq(i16 addr){sp = (ra == rb)? sp : addr;}
 
     //==============================//
     

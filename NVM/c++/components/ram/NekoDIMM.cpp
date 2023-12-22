@@ -4,5 +4,7 @@
 class Ram
 {
   public:
-    u16 mem[0xFF];
+    std::vector<i16> ram;
+
+    Ram(size_t size) {ram.resize(size);}
 };
