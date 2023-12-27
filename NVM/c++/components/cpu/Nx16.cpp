@@ -4,9 +4,6 @@
 
 enum Instructions
 {
-  I16 = 0xF0, //Positive 16 bit integer
-  N16 = 0xF1, //Negative 16 bit integer
-
   LDA = 0x01, //Load to A
   LDB = 0x02, //Load to B
   LDC = 0x03, //Load to C
@@ -31,7 +28,7 @@ class CPU
     i16 rb = 0x0;
     i16 rc = 0x0;
     i16 rx = 0x0;
-    i16 sp = 0xFFFF;
+    size_t sp = 0x0;
     i16 xi = 0;
 
     bool state = 0;
@@ -41,12 +38,8 @@ class CPU
     Ram& mem;
 
   public:
-    //changes the stack pointer (bios sp init)
-    void point(i16 p)
-    {sp = p;}
-
     //initialize cpu and connect with ram
-    void CPU(Ram& mem) : mem(mem){}
+    CPU(Ram& mem) : mem(mem){}
 
     //Load2Reg
     void lda(i16 addr){ra = mem.ram[addr];}
@@ -65,7 +58,7 @@ class CPU
     //interupts and halts
     void sys(){}
     void nya(){}
-    void hlt(i16 addr){return mem.ram[addr];}
+    i16 hlt(i16 addr){return mem.ram[addr];}
 
     //jump and conditional jump
     void jmp(i16 addr){sp = addr;}

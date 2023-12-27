@@ -1,1 +1,1 @@
-g++ -o ./build/app ./vm.cpp
+g++ -o ./build/nyani ./main.cpp

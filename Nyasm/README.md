@@ -1,4 +1,4 @@
-# Nyani bytecode assembler  
+# Nyani bytecode assembler (nyasm) 
 First we need to establish how the Nx16 CPU works,  
 each cycle itt pulls an instruction from RAM then  
 divides it to 2 parts, the opCode and the data  
@@ -14,6 +14,12 @@ The assembler will create a program to be loaded in RAM
 offset by 100 values which is the start point of execution  
 it will also calculate addresses for labels in order  
 for jump instructions to work  
+
+Nyani assembly is written differently than regular asm  
+each label is contained within a file, you pass the project folder to nyasm which will search for start.nas, basically close to java classes in principal  
+you can refactor code very easily this way, and it also allows the creation of NyaHub, the Nyani Label Manager (instead of a package or module manager like pip)  
+isolating labels is the intended way of writing Nyani  
+
 
 a list of CPU instructions for the Nx16 architecture can  
 be found at the Docs main folder...
