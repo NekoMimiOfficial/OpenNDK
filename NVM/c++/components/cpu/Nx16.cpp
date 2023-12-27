@@ -78,4 +78,17 @@ class CPU
     void decode(){}
     void execute(){}
 
+    void arm(){state = 1;}
+    void disarm(){state = 0;}
+
+    void run()
+    {
+      while(state == 1)
+      {
+        fetch();
+        decode();
+        execute();
+      }
+    }
+
 };
